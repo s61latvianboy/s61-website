@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biedrība S61 — Stirnu iela 61</title>
+<style>
+:root {
+  --primary: #2c3e50; /* темный графитовый */
+  --secondary: #3498db; /* модный синий */
+  --accent: #f39c12; /* теплый акцент */
+  --bg: #ecf0f1; /* светлый фон */
+  --text: #2c3e50;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Inter",sans-serif; }
+body { background: var(--bg); color: var(--text); line-height:1.5; overflow-x:hidden; }
+
+header {
+  width:100%; padding:15px 5%; display:flex; justify-content:space-between; align-items:center;
+  background: #fff; position: sticky; top:0; z-index:1000; border-bottom:1px solid #d1d1d1;
+}
+.logo { font-size:1.4rem; font-weight:700; color: var(--secondary); }
+nav a { margin-left:20px; color: var(--text); text-decoration:none; font-weight:500; }
+nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero {
+  position: relative; padding:120px 5% 60px 5%; text-align:center;
+  background: var(--bg); overflow: hidden; border-radius:12px;
+}
+.hero-image {
+  position:absolute; top:10px; left:10px; width:100px; opacity:0.8; border-radius:8px; z-index:1;
+}
+.hero-content {
+  position: relative; z-index:2; max-width:700px; margin:0 auto;
+  padding:30px; background: rgba(255,255,255,0.95); border-radius:12px;
+}
+.hero-content h1 { font-size:2rem; font-weight:800; color: var(--secondary); margin-bottom:10px; }
+.hero-content p { font-size:1rem; color: var(--text); margin-bottom:15px; }
+
+/* Modern WhatsApp button 2025 */
+.btn-whatsapp {
+  display:inline-block; 
+  padding:12px 25px; 
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color:#fff; 
+  font-weight:600; 
+  border-radius:12px; 
+  text-decoration:none; 
+  font-size:1rem; 
+  box-shadow: 0 4px 20px rgba(37,211,102,0.6);
+  transition: 0.3s all;
+  position: relative;
+}
+.btn-whatsapp::after {
+  content:""; 
+  position:absolute; top:0; left:0; width:100%; height:100%; border-radius:12px;
+  box-shadow: 0 0 10px #25D366, 0 0 20px #25D366, 0 0 40px #25D366;
+  opacity:0; transition:0.3s;
+}
+.btn-whatsapp:hover::after { opacity:1; }
+.btn-whatsapp:hover { transform: scale(1.05); }
+
+/* Sections - compact */
+section { padding:40px 5%; max-width:700px; margin:0 auto 20px auto; background: var(--bg); border-radius:12px; }
+h2 { font-size:1.8rem; color: var(--secondary); margin-bottom:12px; }
+.text { font-size:1rem; color: var(--text); line-height:1.6; margin-bottom:12px; }
+
+/* Contacts */
+.contact-info { margin-bottom:8px; font-size:1rem; }
+
+/* Footer */
+footer { background: var(--bg); padding:30px 5%; text-align:center; font-size:0.9rem; color:#555; border-top:1px solid #d1d1d1; border-radius:0 0 12px 12px; }
+
+/* Flying clips */
+.symbol { position:absolute; font-size:1.4rem; pointer-events:none; user-select:none; transition: transform 0.1s linear; }
+.symbol.red { color: rgba(192,57,43,0.3); }
+.symbol.yellow { color: rgba(243,156,18,0.3); }
+
+/* Responsive */
+@media(max-width:768px){
+  .hero-content h1 { font-size:1.6rem; }
+  nav a { margin-left:12px; font-size:0.9rem; }
+  section { padding:30px 5%; }
+  .hero-image { width:70px; top:5px; left:5px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Biedrība S61</div>
+  <nav>
+    <a href="#kas">Kas mēs esam</a>
+    <a href="#misiija">Mūsu mērķi</a>
+    <a href="#kontakti">Kontakti</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="img1.jpg" alt="Stirnu 61" class="hero-image">
+  <div class="hero-content">
+    <h1>Stirnu iela 61 — mūsu kopiena</h1>
+    <p>Mēs esam Stirnu ielas 61 dzīvokļu īpašnieku kopiena. Mūsu mērķis — radīt māju, kurā drošība, kārtība un silta atmosfēra ļauj ikvienam justies kā mājās.</p>
+    <a href="https://chat.whatsapp.com/KMIymf0CFdz20Qe0Di3RyH" target="_blank" class="btn-whatsapp">Pievienoties WhatsApp grupai</a>
+  </div>
+
+  <!-- Flying clips -->
+  <div class="symbol red" style="top:10%; left:15%;">📎</div>
+  <div class="symbol yellow" style="top:50%; left:40%;">📎</div>
+  <div class="symbol red" style="top:70%; left:70%;">📎</div>
+  <div class="symbol yellow" style="top:30%; left:80%;">📎</div>
+</section>
+
+<section id="kas">
+  <h2>Kas mēs esam</h2>
+  <p class="text">Biedrība S61 apvieno Stirnu ielas 61 dzīvokļu īpašniekus, nodrošinot drošu, pārredzamu un sakārtotu mājas pārvaldību. Mēs strādājam kopīgi, lai katrs iedzīvotājs justos droši un mājīgi.</p>
+</section>
+
+<section id="misiija">
+  <h2>Mūsu mērķi</h2>
+  <p class="text">Mūsu uzdevums ir radīt ērtu, drošu un mūsdienīgu dzīves vidi mājā. Nodrošināt pārredzamību apsaimniekošanā, modernus risinājumus un vienkāršu informācijas pieejamību ikvienam dzīvokļa īpašniekam.</p>
+</section>
+
+<section id="kontakti">
+  <h2>Kontakti</h2>
+  <p class="contact-info"><b>E-pasts:</b> stirnu61@gmail.com</p>
+  <p class="contact-info"><b>Tālrunis:</b> +371 20431011</p>
+  <p><a href="https://chat.whatsapp.com/KMIymf0CFdz20Qe0Di3RyH" target="_blank" class="btn-whatsapp">Pievienoties WhatsApp grupai</a></p>
+</section>
+
+<footer>
+  © 2025 Biedrība S61 — visi jūtas kā mājās. Un visas tiesības aizsargātas.
+</footer>
+
+<script>
+  // Parallax effect for flying clips
+  const symbols = document.querySelectorAll('.symbol');
+  window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    symbols.forEach((sym, index) => {
+      const speed = 0.2 + index*0.15;
+      sym.style.transform = `translateY(${scroll*speed}px) rotate(${scroll*speed*2}deg) translateX(${Math.sin(scroll*0.01+index)*20}px)`;
+    });
+  });
+</script>
+
+</body>
+</html>
