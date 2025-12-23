@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biedrība S61</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    background: #f4f7fb;
+    color: #1f2d3d;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff, #eaf1f8);
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+header p {
+    font-size: 14px;
+    color: #555f6e;
+    margin: 6px 0 0 0;
+}
+
+header .reg-number {
+    font-weight: 600;
+    margin-top: 6px;
+    color: #444d5a;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #1f2d3d;
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+}
+
+.card.kontakti:hover {
+    background: #eaf1f8;
+    color: #1e3799;
+}
+
+.card:hover:not(.kontakti) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    background: #eaf1f8;
+}
+
+.card:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: #e4edf5;
+}
+
+.card.whatsapp {
+    background: #25d366;
+    color: white;
+}
+
+.card.whatsapp:hover {
+    background: #1ebe5d;
+}
+
+.card i {
+    font-size: 22px;
+}
+
+/* Блок с логотипом под WhatsApp */
+.logo-block {
+    margin-top: 12px;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 280px;
+    width: 100%;
+}
+
+.logo-block img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+}
+
+/* Адаптив для мобильных */
+@media(max-width:480px) {
+    .logo-block img {
+        max-width: 90%;
+    }
+    .container {
+        padding: 16px 8px;
+    }
+    .card {
+        max-width: 100%;
+        font-size: 16px;
+        padding: 16px;
+    }
+    footer {
+        border-radius: 0;
+        padding-bottom: 20px;
+    }
+}
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: #555f6e;
+    padding: 20px 10px 10px 10px;
+    border-top: 1px solid #dce4ed;
+    background: linear-gradient(135deg, #f4f7fb, #eaf1f8);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+footer .contacts {
+    margin: 8px 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+footer .contacts a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+footer .contacts a:hover {
+    color: #1e3799;
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #999;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Biedrība S61</h1>
+        <p>Stirnu 61 iedzīvotāju biedrība</p>
+        <p>Oficiālā mājaslapa un oficiālā WhatsApp grupa</p>
+        <p class="reg-number">Reģ. Nr. 40008353329</p>
+    </header>
+
+    <a href="kontakti.html" class="card kontakti">
+        <i class="fas fa-phone"></i> Kontakti
+    </a>
+
+    <a href="dokumenti.html" class="card">
+        <i class="fas fa-file-alt"></i> Dokumenti
+    </a>
+
+    <a href="drosiba.html" class="card">
+        <i class="fas fa-shield-alt"></i> Drošības instrukcijas
+    </a>
+
+    <a href="https://chat.whatsapp.com/KMIymf0CFdz20Qe0Di3RyH" class="card whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp grupa
+    </a>
+
+    <!-- Логотип с адресом дома -->
+    <div class="logo-block">
+        <img src="logo.png" alt="Stirnu 61 Adrese">
+    </div>
+</div>
+
+<footer>
+    <div class="contacts">
+        <a href="mailto:info@s61.lv">✉ info@s61.lv</a>
+        <a href="mailto:stirnu61@gmail.com">✉ stirnu61@gmail.com</a>
+        <a href="tel:+37120431011">📞 +371 20431011</a>
+    </div>
+    <p>© 2026 Biedrība S61 — visas tiesības aizsargātas.</p>
+</footer>
+</body>
+</html>
