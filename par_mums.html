@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Par mums — Biedrība S61</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    background: #f4f7fb;
+    color: #1f2d3d;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ОСНОВНОЙ КОНТЕЙНЕР */
+.container {
+    flex: 1; /* контейнер растягивается, чтобы футер был внизу */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff, #eaf1f8);
+    padding: 56px 24px 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+.header-logo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+.header-logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+header p {
+    font-size: 14px;
+    color: #555f6e;
+    margin: 6px 0 0 0;
+}
+header .reg-number {
+    font-weight: 600;
+    margin-top: 6px;
+    color: #444d5a;
+}
+
+/* СЕКЦИЯ */
+.section {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #1f2d3d;
+}
+.section p {
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #1f2d3d;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: #555f6e;
+    padding: 20px 10px 10px;
+    border-top: 1px solid #dce4ed;
+    background: linear-gradient(135deg, #f4f7fb, #eaf1f8);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto; /* прижимает футер к низу */
+}
+footer .contacts {
+    margin: 8px 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+footer .contacts a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+footer .contacts a:hover {
+    text-decoration: underline;
+}
+footer p {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #999;
+}
+
+/* МОБИЛКА */
+@media(max-width:480px) {
+    .header-logo img {
+        width: 60px;
+    }
+    header {
+        padding-top: 56px;
+    }
+    .section p {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-logo">
+            <img src="logo2.png" alt="Stirnu iela 61">
+        </div>
+        <h1>Biedrība S61</h1>
+        <p>Stirnu 61 iedzīvotāju biedrība</p>
+        <p>Oficiālā mājaslapa</p>
+        <p class="reg-number">Reģ. Nr. 40008353329</p>
+    </header>
+
+    <div class="section">
+        <h2>Par mums</h2>
+        <p><b>Biedrība S61</b> darbojas vienīgi dzīvokļu īpašnieku interesēs, nodrošinot Stirnu ielas 61 daudzdzīvokļu mājas dzīvokļu īpašniekiem ērtu saziņu, pārvaldību un mājas labiekārtošanu. Mūsu mērķis ir pārstāvēt iedzīvotājus jautājumos, kas saistīti ar īpašuma pārvaldību, uzturēšanu un attīstību, maksimāli nodrošinot pārredzamību un juridisku aizsardzību.</p>
+        <p>Mēs neuzņemamies atbildību par trešo personu lēmumiem vai darbībām ārpus mūsu pilnvarām, bet maksimāli pārstāvam dzīvokļu īpašnieku intereses visos saistītajos jautājumos.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="contacts">
+        <a href="mailto:info@s61.lv">✉ info@s61.lv</a>
+        <a href="mailto:stirnu61@gmail.com">✉ stirnu61@gmail.com</a>
+        <a href="tel:+37120431011">📞 +371 20431011</a>
+    </div>
+    <p>© 2026 Biedrība S61 — visas tiesības aizsargātas.</p>
+</footer>
+
+</body>
+</html>
