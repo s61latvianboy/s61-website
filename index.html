@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biedrība S61</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+html,body{
+    margin:0;
+    height:100%;
+    overflow:hidden;
+    font-family:Inter,sans-serif;
+    background:#05070c;
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:0;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+    z-index:1;
+}
+
+.center{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+/* CARD */
+.card{
+    width:360px;
+    max-width:92vw;
+
+    padding:30px 22px;
+    border-radius:26px;
+
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+
+    backdrop-filter: blur(22px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+
+    color:white;
+    text-align:center;
+
+    animation:heroIn 1s ease forwards;
+}
+
+h1{
+    margin:0;
+    font-size:28px;
+    font-weight:600;
+}
+
+/* EMAIL */
+.email,.whatsapp,.join{
+    margin-top:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:14px 16px;
+    border-radius:14px;
+
+    color:white;
+    text-decoration:none;
+
+    font-weight:600;
+    font-size:14px;
+
+    cursor:pointer;
+    transition:0.25s ease;
+}
+
+/* EMAIL */
+.email{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+}
+
+/* WHATSAPP */
+.whatsapp{
+    background:#25D366;
+    box-shadow:0 0 25px rgba(37,211,102,0.35);
+}
+
+/* JOIN */
+.join{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.16);
+}
+
+/* HOVER */
+.email:hover,.whatsapp:hover,.join:hover{
+    transform:translateY(-2px) scale(1.02);
+}
+
+/* POPUP */
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-bg{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+}
+
+.modal-box{
+    position:relative;
+    width:340px;
+
+    padding:20px;
+    border-radius:18px;
+
+    background:rgba(20,25,35,0.92);
+    border:1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(18px);
+    color:white;
+
+    animation:pop 0.25s ease;
+}
+
+.modal-box h2{
+    margin:0 0 10px 0;
+    font-size:18px;
+}
+
+.steps p{
+    margin:8px 0;
+    font-size:13px;
+    color:rgba(255,255,255,0.8);
+}
+
+.download{
+    display:block;
+    margin-top:14px;
+    text-align:center;
+
+    padding:12px;
+    border-radius:12px;
+
+    background:#4f8cff;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+@keyframes heroIn{
+    from{opacity:0;transform:translateY(30px) scale(0.96);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+@keyframes pop{
+    from{transform:scale(0.95);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="c"></canvas>
+<div class="overlay"></div>
+
+<div class="center">
+    <div class="card">
+
+        <h1>Biedrība S61</h1>
+
+        <a class="email" href="mailto:info@s61.lv?subject=S61%20Kontakt&body=Labdien,">
+            <i class="fas fa-envelope"></i>
+            info@s61.lv
+        </a>
+
+        <a class="whatsapp" href="https://chat.whatsapp.com/KMIymf0CFdz20Qe0Di3RyH" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            WhatsApp grupa
+        </a>
+
+        <div class="join" onclick="openModal()">
+            <i class="fas fa-user-plus"></i>
+            Iestāties biedrībā
+        </div>
+
+    </div>
+</div>
+
+<!-- POPUP -->
+<div class="modal" id="modal">
+    <div class="modal-bg" onclick="closeModal()"></div>
+
+    <div class="modal-box">
+        <h2>Iestāšanās biedrībā</h2>
+
+        <div class="steps">
+            <p>1. Lejupielādē iesniegumu</p>
+            <p>2. Aizpildi un paraksti ar drošu elektronisko parakstu</p>
+            <p>3. Nosūti mums uz info@s61.lv</p>
+        </div>
+
+        <a class="download" href="uznemt_s61.docx" download>
+            ⬇ Lejupielādēt iesniegumu
+        </a>
+    </div>
+</div>
+
+<script>
+
+/* BACKGROUND */
+const c=document.getElementById("c");
+const ctx=c.getContext("2d");
+
+function resize(){
+    c.width=innerWidth;
+    c.height=innerHeight;
+}
+resize();
+
+let W=c.width, H=c.height;
+
+let pts=[];
+for(let i=0;i<160;i++){
+    pts.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        vx:(Math.random()-0.5)*2,
+        vy:(Math.random()-0.5)*2
+    });
+}
+
+function draw(){
+    ctx.fillStyle="rgba(3,6,12,0.22)";
+    ctx.fillRect(0,0,W,H);
+
+    for(let p of pts){
+        p.x+=p.vx;
+        p.y+=p.vy;
+
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p.y>H) p.vy*=-1;
+
+        ctx.fillStyle="rgba(34,197,94,1)";
+        ctx.fillRect(p.x,p.y,2.2,2.2);
+    }
+
+    requestAnimationFrame(draw);
+}
+draw();
+
+/* MODAL */
+function openModal(){
+    document.getElementById("modal").classList.add("active");
+}
+
+function closeModal(){
+    document.getElementById("modal").classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
