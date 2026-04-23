@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biedrība S61</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+:root{
+    --bg:#05070c;
+    --glass:rgba(255,255,255,0.06);
+    --glass-strong:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.14);
+    --text:#fff;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    height:100%;
+    overflow-x:hidden;
+    font-family:Inter,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:0;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+    z-index:1;
+}
+
+.center{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.card{
+    width:360px;
+    max-width:92vw;
+    padding:30px 22px;
+    border-radius:26px;
+    background:var(--glass);
+    border:1px solid var(--border);
+    backdrop-filter:blur(24px);
+    box-shadow:0 30px 90px rgba(0,0,0,0.65),inset 0 1px 0 rgba(255,255,255,0.1);
+    text-align:center;
+    animation:heroIn .9s ease;
+}
+
+h1{
+    margin:0 0 14px;
+    font-size:28px;
+    font-weight:600;
+}
+
+.menu{
+    margin-top:10px;
+    border-radius:18px;
+    background:var(--glass-strong);
+    border:1px solid var(--border);
+    backdrop-filter:blur(20px);
+    overflow:hidden;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:14px;
+    cursor:pointer;
+    text-decoration:none;
+    color:var(--text);
+    position:relative;
+    transition:.25s ease;
+    will-change:transform;
+}
+
+.menu-item + .menu-item{
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.menu-item::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent);
+    opacity:0;
+    transition:.25s;
+}
+
+.menu-item:hover::before{opacity:1}
+
+.menu-item:hover{
+    transform:scale(1.01);
+}
+
+.menu-item.accent{
+    color:#25D366;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+
+.modal.active{display:flex}
+
+.modal-bg{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+}
+
+.modal-box{
+    position:relative;
+    width:340px;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(20,25,35,0.92);
+    border:1px solid rgba(255,255,255,0.12);
+    backdrop-filter:blur(18px);
+    animation:pop .25s ease;
+}
+
+.modal-box h2{
+    margin:0 0 10px;
+    font-size:18px;
+}
+
+.steps p{
+    margin:8px 0;
+    font-size:13px;
+    opacity:.85;
+}
+
+/* ⭐ ЗОЛОТАЯ КНОПКА */
+.download{
+    position:relative;
+    overflow:hidden;
+
+    display:block;
+    margin-top:14px;
+    padding:12px;
+    border-radius:12px;
+
+    text-align:center;
+    text-decoration:none;
+    font-weight:600;
+    color:#fff;
+
+    background:linear-gradient(135deg,#facc15,#f59e0b);
+    border:1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 0 25px rgba(250,204,21,0.35),
+        0 10px 30px rgba(245,158,11,0.25);
+
+    transition:.25s ease;
+}
+
+.download:hover{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:
+        0 0 35px rgba(250,204,21,0.5),
+        0 15px 40px rgba(245,158,11,0.35);
+}
+
+.download::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+
+    opacity:0;
+    transition:.3s;
+}
+
+.download:hover::before{
+    opacity:1;
+}
+
+@keyframes heroIn{
+    from{opacity:0;transform:translateY(30px) scale(.96)}
+    to{opacity:1;transform:none}
+}
+
+@keyframes pop{
+    from{transform:scale(.95);opacity:0}
+    to{transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="c"></canvas>
+<div class="overlay"></div>
+
+<div class="center">
+    <div class="card">
+        <h1>Biedrība S61</h1>
+
+        <div class="menu" role="menu">
+
+            <a class="menu-item"
+               href="mailto:info@s61.lv?subject=S61%20Kontakt&body=Labdien,"
+               role="menuitem">
+                <i class="fas fa-envelope"></i>
+                info@s61.lv
+            </a>
+
+            <a class="menu-item accent"
+               href="https://chat.whatsapp.com/KMIymf0CFdz20Qe0Di3RyH"
+               target="_blank"
+               rel="noopener"
+               role="menuitem">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp grupa
+            </a>
+
+            <div class="menu-item"
+                 id="joinBtn"
+                 role="menuitem"
+                 tabindex="0">
+                <i class="fas fa-user-plus"></i>
+                Iestāties biedrībā
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-bg"></div>
+
+    <div class="modal-box">
+        <h2>Iestāšanās biedrībā</h2>
+
+        <div class="steps">
+            <p>1. Lejupielādē iesniegumu</p>
+            <p>2. Aizpildi un paraksti ar eParakstu</p>
+            <p>3. Nosūti uz info@s61.lv</p>
+            <p>4. Gaidi atbildi 😄</p>
+        </div>
+
+        <a class="download" href="uznemt_s61.docx" download>
+            ⬇ Lejupielādēt
+        </a>
+    </div>
+</div>
+
+<script>
+(() => {
+
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+let points = [];
+let active = true;
+
+const POINTS = window.innerWidth < 768 ? 80 : 140;
+
+function resize(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    points = Array.from({length:POINTS}, () => ({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        vx:(Math.random()-0.5)*1.5,
+        vy:(Math.random()-0.5)*1.5
+    }));
+}
+
+function frame(){
+    if(active){
+        ctx.fillStyle="rgba(3,6,12,0.22)";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        for(const p of points){
+            p.x+=p.vx;
+            p.y+=p.vy;
+
+            if(p.x<0||p.x>canvas.width) p.vx*=-1;
+            if(p.y<0||p.y>canvas.height) p.vy*=-1;
+
+            ctx.fillStyle="#22c55e";
+            ctx.fillRect(p.x,p.y,2,2);
+        }
+    }
+    requestAnimationFrame(frame);
+}
+
+const modal = document.getElementById("modal");
+const joinBtn = document.getElementById("joinBtn");
+
+joinBtn.addEventListener("click", () => modal.classList.add("active"));
+
+joinBtn.addEventListener("keydown", e=>{
+    if(e.key==="Enter") modal.classList.add("active");
+});
+
+modal.addEventListener("click", e=>{
+    if(e.target.classList.contains("modal-bg")){
+        modal.classList.remove("active");
+    }
+});
+
+document.addEventListener("keydown", e=>{
+    if(e.key==="Escape") modal.classList.remove("active");
+});
+
+document.addEventListener("visibilitychange", ()=>{
+    active = !document.hidden;
+});
+
+window.addEventListener("resize", resize);
+
+resize();
+frame();
+
+})();
+</script>
+
+</body>
+</html>
