@@ -228,7 +228,7 @@ h1{
 
         <div class="steps">
             <p>1. Lejupielādē iesniegumu</p>
-            <p>2. Paraksti ar eParakstu</p>
+            <p>2. Aizpildi un paraksti ar eParakstu</p>
             <p>3. Nosūti uz info@s61.lv</p>
         </div>
 
@@ -241,7 +241,7 @@ h1{
 <script>
 /*
     Весь JS в замыкании.
-    Глобальный scope оставим тем, кто пишет jQuery в 2026.
+    
 */
 (() => {
 
@@ -262,7 +262,7 @@ h1{
     }
 
     function initPoints(){
-        // создаём точки. нет, не через магию. просто нормально.
+        // создаём точки. нет, не через магию.
         points = Array.from({length:POINTS_COUNT}, () => ({
             x:Math.random()*canvas.width,
             y:Math.random()*canvas.height,
